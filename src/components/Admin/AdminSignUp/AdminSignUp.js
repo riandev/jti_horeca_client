@@ -7,7 +7,7 @@ const AdminSignUp = () => {
   const [signUpStatus, setSignUpStatus] = useState(false);
   const onSubmit = (data) => {
     console.log(data);
-    fetch("https://limitless-savannah-22520.herokuapp.com/adminSignUp", {
+    fetch("http://192.168.10.11:5052/adminSignUp", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

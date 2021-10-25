@@ -27,14 +27,13 @@ const SurveyBody = () => {
   const [q16, setQ16] = useState(null);
   const [q17, setQ17] = useState(null);
   const [q18, setQ18] = useState(null);
+  const [remakrsQ10, setRemakrsQ10] = useState(null);
 
   const handleText = (e) => {
     setSearchNumber(e.target.value);
   };
   const handleSearch = () => {
-    fetch(
-      `https://limitless-savannah-22520.herokuapp.com/dMatched/${searchNumber}`
-    )
+    fetch(`http://192.168.10.11:5052/dMatched/${searchNumber}`)
       .then((res) => res.json())
       .then((data) => setConsumer(data));
     setNotFound(true);
@@ -94,6 +93,9 @@ const SurveyBody = () => {
   const q18value = (e) => {
     setQ18(e.target.value);
   };
+  const remarksq10 = (e) => {
+    setRemakrsQ10(e.target.value);
+  };
   const agent = sessionStorage.getItem("agent");
   const handleSubmit = (e) => {
     const answer = {
@@ -113,18 +115,16 @@ const SurveyBody = () => {
       ans16: q16,
       ans17: q17,
       ans18: q18,
+      remarksQ10: remakrsQ10,
       agentID: agent,
       callDate: new Date().toLocaleDateString(),
       callTime: new Date().toLocaleTimeString(),
     };
-    fetch(
-      `https://limitless-savannah-22520.herokuapp.com/answers/${consumer?._id}`,
-      {
-        method: "PATCH",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(answer),
-      }
-    )
+    fetch(`http://192.168.10.11:5052/answers/${consumer?._id}`, {
+      method: "PATCH",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(answer),
+    })
       .then((res) => res.json())
       .then((data) => console.log(data));
     console.log(answer);
@@ -346,31 +346,42 @@ const SurveyBody = () => {
         <Form.Group onChange={q10value} as={Row}>
           <Form.Control as="select" className="w-50 ml-3">
             <option>...</option>
-            <option value="5stick">5 শলাকা</option>
-            <option value="5stickOrMore">৫ শলাকা অথবা তার বেশি</option>
+            <option value="3stick">৩ শলাকা</option>
+            <option value="3stickOrMore">৩ শলাকার বেশি</option>
+            <option value="others">অন্যান্য</option>
           </Form.Control>
         </Form.Group>
       </div>
       <div
         style={{
-          display: q10 === "5stick" ? "block" : "none",
+          display:
+            q10 === "3stick" || q10 === "3stickOrMore" ? "block" : "none",
         }}
         className="mt-2"
       >
         <h6>
-          ১১. স্যার সিগারেট ক্রয় করার পর প্রতিনিধি আপনাকে কোনো কিছু দিয়েছিল কি?
+          ১১. প্রতিনিধির কথায় সিগারেট ক্রয় করার পর দোকান থেকে আপনাকে ৩০ মিনিট
+          ফ্রি Wifi সুবিধা এবং ১ কাপ চা কি অফার করেছিল?
         </h6>
         <Form.Group onChange={q11value} as={Row}>
           <Form.Control as="select" className="w-50 ml-3">
             <option>...</option>
-            <option value="yes">হ্যাঁ</option>
-            <option value="no">না</option>
+            <option value="tea">Tea</option>
+            <option value="wifi">Wifi</option>
+            <option value="both">Both</option>
+            <option value="notOffered">Not Offered</option>
           </Form.Control>
         </Form.Group>
       </div>
       <div
         style={{
-          display: q10 === "5stickOrMore" ? "block" : "none",
+          display:
+            q11 === "tea" ||
+            q11 === "wifi" ||
+            q11 === "both" ||
+            q11 === "notOffered"
+              ? "block"
+              : "none",
         }}
         className="mt-2"
       >
@@ -410,8 +421,7 @@ const SurveyBody = () => {
           <Form.Control as="select" className="w-50 ml-3">
             <option>...</option>
             <option value="berryCapsule">বেরি ক্যাপসূল</option>
-            <option value="crackedFresh">ফাটালেই ফ্রেশ</option>
-            <option value="freshAndSmart">ফ্রেশ ও স্মার্ট</option>
+            <option value="7TakaOption">৭ টাকায় অপশন</option>
             <option value="smartOption">স্মার্ট অপশন</option>
             <option value="option">অপশন</option>
             <option value="cannotRemember">মনে নেই</option>
@@ -422,8 +432,7 @@ const SurveyBody = () => {
         style={{
           display:
             q15 === "berryCapsule" ||
-            q15 === "crackedFresh" ||
-            q15 === "freshAndSmart" ||
+            q15 === "7TakaOption" ||
             q15 === "smartOption" ||
             q15 === "option" ||
             q15 === "cannotRemember"
@@ -460,6 +469,9 @@ const SurveyBody = () => {
             </option>
             <option value="availability">সহজলভ্যতা</option>
             <option value="berryCapsule">বেরি ক্যাপসূল</option>
+            <option value="7TakaiCapsuleCigrate">
+              ৭ টাকায় ক্যাপসুল সিগারেট
+            </option>
           </Form.Control>
         </Form.Group>
       </div>
@@ -480,7 +492,29 @@ const SurveyBody = () => {
             <option value="design">ডিজাইন</option>
             <option value="availability">সহজলভ্যতা</option>
             <option value="berryCapsule">বেরি ক্যাপসূল</option>
+            <option value="7TakaiCapsuleCigrate">
+              ৭ টাকায় ক্যাপসুল সিগারেট
+            </option>
           </Form.Control>
+        </Form.Group>
+      </div>
+      <div
+        style={{
+          display: q10 === "others" ? "block" : "none",
+        }}
+        className="mt-2"
+      >
+        <Form.Group
+          className="mb-3"
+          onChange={remarksq10}
+          as={Row}
+          controlId="exampleForm.ControlInput1"
+        >
+          <Form.Control
+            className="w-50 ml-3"
+            type="text"
+            placeholder="Type Remarks"
+          />
         </Form.Group>
       </div>
       {/* Final Question */}
@@ -494,15 +528,18 @@ const SurveyBody = () => {
             q4 === "no" ||
             q6 === "no" ||
             q9 === "no" ||
+            q10 === "others" ||
             q17 === "taste(berryCapsule)" ||
             q17 === "packOrStickDesign" ||
             q17 === "availability" ||
             q17 === "price" ||
             q17 === "offer" ||
+            q17 === "7TakaiCapsuleCigrate" ||
             q18 === "taste(berryCapsule)" ||
             q18 === "availability" ||
             q18 === "price" ||
-            q18 === "habbit"
+            q18 === "habbit" ||
+            q18 === "7TakaiCapsuleCigrate"
               ? "block"
               : "none",
         }}

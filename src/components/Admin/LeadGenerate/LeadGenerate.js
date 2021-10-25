@@ -30,10 +30,7 @@ const LeadGenerate = () => {
   };
 
   const generateInitial = () => {
-    fetch(
-      "https://limitless-savannah-22520.herokuapp.com/initialLead?initDate=" +
-        initialDate
-    )
+    fetch("http://192.168.10.11:5052/initialLead?initDate=" + initialDate)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -58,7 +55,7 @@ const LeadGenerate = () => {
   ];
 
   const updateInitialLeads = () => {
-    fetch("https://limitless-savannah-22520.herokuapp.com/updateInitialLead", {
+    fetch("http://192.168.10.11:5052/updateInitialLead", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(initialLeads),
@@ -68,10 +65,7 @@ const LeadGenerate = () => {
   };
 
   const regenerateLeads = () => {
-    fetch(
-      "https://limitless-savannah-22520.herokuapp.com/regenerate?regenDate=" +
-        regenDate
-    )
+    fetch("http://192.168.10.11:5052/regenerate?regenDate=" + regenDate)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -89,7 +83,7 @@ const LeadGenerate = () => {
   };
 
   const regenerateUpdate = () => {
-    fetch("https://limitless-savannah-22520.herokuapp.com/regenerateUpdate", {
+    fetch("http://192.168.10.11:5052/regenerateUpdate", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(regenerate),
@@ -136,7 +130,7 @@ const LeadGenerate = () => {
                   <CSVLink
                     headers={headers}
                     title="Export data to CSV"
-                    filename="JTI_One_2_One_InitialLead.csv"
+                    filename="JTI_Horeca_InitialLead.csv"
                     data={initialLeads}
                   >
                     Download
@@ -184,7 +178,7 @@ const LeadGenerate = () => {
                   <CSVLink
                     headers={headers}
                     title="Export data to CSV"
-                    filename="JTI_One_2_One_regenerateLead.csv"
+                    filename="JTI_Horeca_regenerateLead.csv"
                     data={regenerate}
                   >
                     Download

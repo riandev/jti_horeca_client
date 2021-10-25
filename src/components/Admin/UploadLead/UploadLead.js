@@ -16,7 +16,7 @@ const UploadLead = () => {
   };
 
   const handleUploadLead = () => {
-    fetch("https://limitless-savannah-22520.herokuapp.com/uploadLead", {
+    fetch("http://192.168.10.11:5052/uploadLead", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(lead),

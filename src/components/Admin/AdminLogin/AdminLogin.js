@@ -20,7 +20,7 @@ const AdminLogin = () => {
   console.log(email);
 
   useEffect(() => {
-    fetch("https://limitless-savannah-22520.herokuapp.com/admin?email=" + email)
+    fetch("http://192.168.10.11:5052/admin?email=" + email)
       .then((res) => res.json())
       .then((data) => setMatchedAdmin(data))
       .catch((err) => console.log(err));

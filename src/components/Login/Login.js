@@ -20,7 +20,7 @@ const Login = () => {
   const email = loginInfo.email;
 
   useEffect(() => {
-    fetch("https://limitless-savannah-22520.herokuapp.com/agent?email=" + email)
+    fetch("http://192.168.10.11:5052/agent?email=" + email)
       .then((res) => res.json())
       .then((data) => setMatchedAgent(data))
       .catch((err) => console.log(err));

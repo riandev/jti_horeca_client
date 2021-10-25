@@ -22,24 +22,16 @@ const DownloadReport = () => {
     );
   };
   const handleReport = () => {
-    fetch(
-      `https://limitless-savannah-22520.herokuapp.com/getBRReport/${reportDate}`
-    )
+    fetch(`http://192.168.10.11:5052/getBRReport/${reportDate}`)
       .then((res) => res.json())
       .then((data) => setBRReport(data));
-    fetch(
-      `https://limitless-savannah-22520.herokuapp.com/getTerritoryReport/${reportDate}`
-    )
+    fetch(`http://192.168.10.11:5052/getTerritoryReport/${reportDate}`)
       .then((res) => res.json())
       .then((data) => setTerritoyReport(data));
-    fetch(
-      `https://limitless-savannah-22520.herokuapp.com/getAreaReport/${reportDate}`
-    )
+    fetch(`http://192.168.10.11:5052/getAreaReport/${reportDate}`)
       .then((res) => res.json())
       .then((data) => setAreaReport(data));
-    fetch(
-      `https://limitless-savannah-22520.herokuapp.com/getRegionReport/${reportDate}`
-    )
+    fetch(`http://192.168.10.11:5052/getRegionReport/${reportDate}`)
       .then((res) => res.json())
       .then((data) => setRegionReport(data));
   };

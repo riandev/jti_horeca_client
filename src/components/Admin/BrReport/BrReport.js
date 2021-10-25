@@ -11,28 +11,22 @@ const BrReport = () => {
   const [areaDate, setAreaDate] = useState("");
   const [regionDate, setRegionDate] = useState("");
   const handleBrReport = () => {
-    fetch(`https://limitless-savannah-22520.herokuapp.com/baReport/${brDate}`)
+    fetch(`http://192.168.10.11:5052/baReport/${brDate}`)
       .then((res) => res.json())
       .then((data) => setStatus(data));
   };
   const handleTerritoryReport = () => {
-    fetch(
-      `https://limitless-savannah-22520.herokuapp.com/territoryReport/${territoryDate}`
-    )
+    fetch(`http://192.168.10.11:5052/territoryReport/${territoryDate}`)
       .then((res) => res.json())
       .then((data) => setTerritoryStatus(data));
   };
   const handleAreaReport = () => {
-    fetch(
-      `https://limitless-savannah-22520.herokuapp.com/areaReport/${areaDate}`
-    )
+    fetch(`http://192.168.10.11:5052/areaReport/${areaDate}`)
       .then((res) => res.json())
       .then((data) => setAreaStatus(data));
   };
   const handleRegionReport = () => {
-    fetch(
-      `https://limitless-savannah-22520.herokuapp.com/regionReport/${regionDate}`
-    )
+    fetch(`http://192.168.10.11:5052/regionReport/${regionDate}`)
       .then((res) => res.json())
       .then((data) => setRegionStatus(data));
   };

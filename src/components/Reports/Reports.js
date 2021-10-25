@@ -7,24 +7,21 @@ const Reports = () => {
   const [dates, setDates] = useState([]);
   const [downloaded, setDownloaded] = useState([]);
   useEffect(() => {
-    fetch("https://limitless-savannah-22520.herokuapp.com/reports")
+    fetch("http://192.168.10.11:5052/reports")
       .then((res) => res.json())
       .then((data) => {
         setReport(data);
       });
   }, []);
   useEffect(() => {
-    fetch("https://limitless-savannah-22520.herokuapp.com/reportDates")
+    fetch("http://192.168.10.11:5052/reportDates")
       .then((res) => res.json())
       .then((data) => setDates(data));
   }, []);
 
   function handlePrepare(pdate) {
     console.log(pdate);
-    fetch(
-      "https://limitless-savannah-22520.herokuapp.com/prepareByDate?date=" +
-        pdate
-    )
+    fetch("http://192.168.10.11:5052/prepareByDate?date=" + pdate)
       .then((res) => res.json())
       .then((data) => setDownloaded(data));
   }
