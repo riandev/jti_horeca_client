@@ -529,16 +529,15 @@ const SurveyBody = () => {
             q6 === "no" ||
             q9 === "no" ||
             q10 === "others" ||
-            q17 === "taste(berryCapsule)" ||
+            q17 === "taste" ||
             q17 === "packOrStickDesign" ||
             q17 === "availability" ||
-            q17 === "price" ||
-            q17 === "offer" ||
+            q17 === "berryCapsule" ||
             q17 === "7TakaiCapsuleCigrate" ||
-            q18 === "taste(berryCapsule)" ||
+            q18 === "taste" ||
+            q18 === "design" ||
             q18 === "availability" ||
-            q18 === "price" ||
-            q18 === "habbit" ||
+            q18 === "berryCapsule" ||
             q18 === "7TakaiCapsuleCigrate"
               ? "block"
               : "none",
