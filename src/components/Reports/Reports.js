@@ -31,28 +31,30 @@ const Reports = () => {
   }
 
   let headers = [
-    { label: "ID", key: "ID" },
     { label: "diid", key: "diid" },
+    { label: "id", key: "id" },
     { label: "Mail", key: "Mail" },
     { label: "Data_Status", key: "Data_Status" },
     { label: "data_date", key: "data_date" },
     { label: "agencyName", key: "agencyName" },
     { label: "allocated_target", key: "allocated_target" },
-    { label: "BA_Name", key: "BA_Name" },
     { label: "ba_id", key: "ba_id" },
-    { label: "Region", key: "Region" },
-    { label: "Area", key: "Area" },
-    { label: "Territory", key: "Territory" },
     { label: "r_name", key: "r_name" },
     { label: "Consumer_No", key: "Consumer_No" },
     { label: "Age", key: "Age" },
-    { label: "EASOccupation", key: "EASOccupation" },
-    { label: "Outlet_Code", key: "Outlet_Code" },
-    { label: "Outlet_Name", key: "Outlet_Name" },
+    { label: "profession", key: "profession" },
+    { label: "date_recorded", key: "date_recorded" },
+    { label: "outlet_id", key: "outlet_id" },
+    { label: "outlet_name", key: "outlet_name" },
     { label: "reason", key: "reason" },
     { label: "signature", key: "signature" },
-    { label: "Current_Brand", key: "Current_Brand" },
-    { label: "build_city", key: "build_city" },
+    { label: "Which_brand_do_you_smoke", key: "Which_brand_do_you_smoke" },
+    { label: "sales_status", key: "sales_status" },
+    { label: "Have_you_watched_the_AV", key: "Have_you_watched_the_AV" },
+    { label: "Region", key: "Region" },
+    { label: "Area", key: "Area" },
+    { label: "Territory", key: "Territory" },
+    { label: "Sales_Point", key: "Sales_Point" },
     { label: "for_d", key: "for_d" },
     { label: "agentID", key: "agentID" },
     { label: "qcBy", key: "qcChecked" },
@@ -69,6 +71,17 @@ const Reports = () => {
     { label: "q6", key: "answer6" },
     { label: "q7", key: "answer7" },
     { label: "q8", key: "answer8" },
+    { label: "q9", key: "answer9" },
+    { label: "q10", key: "answer10" },
+    { label: "remarksQ10", key: "remarksQ10" },
+    { label: "q11", key: "answer11" },
+    { label: "q12", key: "answer12" },
+    { label: "q13", key: "answer13" },
+    { label: "q14", key: "answer14" },
+    { label: "q15", key: "answer15" },
+    { label: "q16", key: "answer16" },
+    { label: "q17", key: "answer17" },
+    { label: "q18", key: "answer18" },
   ];
   return (
     <div className="mt-5">
@@ -105,7 +118,7 @@ const Reports = () => {
                     <CSVLink
                       headers={headers}
                       title="Export data to CSV"
-                      filename={`JTI_Teaser_${date?.date}.csv`}
+                      filename={`JTI_Horeca_${date?.date}.csv`}
                       data={downloaded}
                     >
                       `Download_${date?.date}`
@@ -125,7 +138,7 @@ const Reports = () => {
           <CSVLink
             headers={headers}
             title="Export data to CSV"
-            filename={"JTI_Teaser.csv"}
+            filename={"JTI_Horeca.csv"}
             data={report}
           >
             Download
