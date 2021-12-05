@@ -346,22 +346,23 @@ const SurveyBody = () => {
         <Form.Group onChange={q10value} as={Row}>
           <Form.Control as="select" className="w-50 ml-3">
             <option>...</option>
+            <option value="1stick">১ শলাকা</option>
+            <option value="2stick">২ শলাকা</option>
             <option value="3stick">৩ শলাকা</option>
-            <option value="3stickOrMore">৩ শলাকার বেশি</option>
+            <option value="4stick">৪ শলাকা</option>
             <option value="others">অন্যান্য</option>
           </Form.Control>
         </Form.Group>
       </div>
       <div
         style={{
-          display:
-            q10 === "3stick" || q10 === "3stickOrMore" ? "block" : "none",
+          display: q10 === "2stick" || q10 === "4stick" ? "block" : "none",
         }}
         className="mt-2"
       >
         <h6>
           ১১. প্রতিনিধির কথায় সিগারেট ক্রয় করার পর দোকান থেকে আপনাকে ৩০ মিনিট
-          ফ্রি Wifi সুবিধা এবং ১ কাপ চা কি অফার করেছিল?
+          ফ্রি Wifi সুবিধা এবং ব্র্যান্ডেড মগে ১ কাপ চা কি অফার করেছিল?
         </h6>
         <Form.Group onChange={q11value} as={Row}>
           <Form.Control as="select" className="w-50 ml-3">
@@ -528,6 +529,8 @@ const SurveyBody = () => {
             q6 === "no" ||
             q9 === "no" ||
             q10 === "others" ||
+            q10 === "1stick" ||
+            q10 === "3stick" ||
             q17 === "taste" ||
             q17 === "packOrStickDesign" ||
             q17 === "availability" ||
