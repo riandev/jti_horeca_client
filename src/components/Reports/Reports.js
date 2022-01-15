@@ -7,21 +7,21 @@ const Reports = () => {
   const [dates, setDates] = useState([]);
   const [downloaded, setDownloaded] = useState([]);
   useEffect(() => {
-    fetch("http://192.168.10.12:5052/reports")
+    fetch("http://192.168.200.10:5052/reports")
       .then((res) => res.json())
       .then((data) => {
         setReport(data);
       });
   }, []);
   useEffect(() => {
-    fetch("http://192.168.10.12:5052/reportDates")
+    fetch("http://192.168.200.10:5052/reportDates")
       .then((res) => res.json())
       .then((data) => setDates(data));
   }, []);
 
   function handlePrepare(pdate) {
     console.log(pdate);
-    fetch("http://192.168.10.12:5052/prepareByDate?date=" + pdate)
+    fetch("http://192.168.200.10:5052/prepareByDate?date=" + pdate)
       .then((res) => res.json())
       .then((data) => setDownloaded(data));
   }
